@@ -20,6 +20,12 @@ client_paris.download_file_from_s3(bucket_name, object_name, local_file_path)
 async def root():
     return {"message": "Hello from PARIS server"}
 
+@app.get("/download_dataset")
+async def root():
+    print("Api hit for download")
+    client_paris.download_file_from_s3(bucket_name, object_name, local_file_path)
+    return {"message": "Dataset download complete!"}
+
 @app.post("/local_training")
 async def test(weights_data: WeightsData):
     base64_encoded_weights = weights_data.weights
@@ -35,4 +41,4 @@ async def test(weights_data: WeightsData):
     return result
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8020)
+    uvicorn.run(app, host="127.0.0.1", port=8010)
