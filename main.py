@@ -21,10 +21,10 @@ async def root():
     return {"message": "Hello from PARIS server"}
 
 @app.get("/download_dataset")
-async def root():
+async def download_dataset():
     print("Api hit for download")
-    client_paris.download_file_from_s3(bucket_name, object_name, local_file_path)
-    return {"message": "Dataset download complete!"}
+    response = client_paris.download_file_from_s3(bucket_name, object_name, local_file_path)
+    return {"message": f"Dataset download result '{response}'!"}
 
 @app.post("/local_training")
 async def test(weights_data: WeightsData):
