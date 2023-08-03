@@ -14,7 +14,7 @@ class WeightsData(BaseModel):
 
 bucket_name = 'paris-5g-nw'
 object_name = 'Traffic_Train_Data.csv'
-local_file_path = '/app/Traffic_Train_Data.csv'
+local_file_path = 'Traffic_Train_Data.csv'
 client_paris.download_file_from_s3(bucket_name, object_name, local_file_path)
 
 @app.get("/")
